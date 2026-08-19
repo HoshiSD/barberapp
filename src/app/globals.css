@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+@layer base {
+  :root {
+    --barber-gold: #c8a951;
+    --barber-gold-light: #e8d48b;
+    --barber-gold-dark: #a07d2e;
+    --bg-primary: #0d0d0d;
+    --bg-secondary: #1a1a1a;
+    --bg-card: #161616;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-barber-dark-500 text-white font-body antialiased;
+    font-family: "Inter", sans-serif;
+  }
+
+  /* Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-barber-dark-400;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-barber-gold/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-barber-gold/50;
+  }
+}
+
+@layer components {
+  /* Tarjeta base del tema barbería */
+  .barber-card {
+    @apply bg-barber-dark-300 border border-white/5 rounded-2xl p-4 
+           transition-all duration-300;
+  }
+
+  .barber-card:hover {
+    @apply border-barber-gold/20 shadow-lg shadow-barber-gold/5;
+  }
+
+  .barber-card.selected {
+    @apply border-barber-gold bg-barber-gold/5 ring-1 ring-barber-gold/30;
+  }
+
+  /* Botón dorado principal */
+  .btn-gold {
+    @apply bg-gradient-to-r from-barber-gold to-barber-gold-light 
+           text-barber-dark-500 font-semibold 
+           px-6 py-3 rounded-xl 
+           transition-all duration-300 
+           hover:shadow-lg hover:shadow-barber-gold/25 
+           hover:scale-[1.02] 
+           active:scale-[0.98];
+  }
+
+  /* Botón outline dorado */
+  .btn-outline-gold {
+    @apply border border-barber-gold/30 text-barber-gold 
+           px-6 py-3 rounded-xl font-medium
+           transition-all duration-300 
+           hover:bg-barber-gold/10 
+           active:scale-[0.98];
+  }
+
+  /* Badge de estado */
+  .badge-confirmed {
+    @apply bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .badge-completed {
+    @apply bg-blue-500/10 text-blue-400 border border-blue-500/20;
+  }
+
+  .badge-cancelled {
+    @apply bg-red-500/10 text-red-400 border border-red-500/20;
+  }
+
+  .badge-no_show {
+    @apply bg-amber-500/10 text-amber-400 border border-amber-500/20;
+  }
+
+  /* Animación de pulso dorado */
+  .pulse-gold {
+    animation: pulseGold 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGold {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(200, 169, 81, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(200, 169, 81, 0);
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-barber-gold to-barber-gold-light 
+           bg-clip-text text-transparent;
+  }
+}
